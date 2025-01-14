@@ -1,12 +1,12 @@
-import express from 'express'
+import express, { Response, Request } from 'express'
 import * as trpcExpress from '@trpc/server/adapters/express'
 import { trpcRouter } from './trpc'
 import cors from 'cors'
 
-
+const x:number = '10'
 const expressApp = express()
 expressApp.use(cors())
-expressApp.get('/ping', (_req: any, res: any) => {
+expressApp.get('/ping', (_req: Request, res: Response) => {
     res.send('pong')
 })
 

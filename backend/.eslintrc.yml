@@ -1,0 +1,6 @@
+parserOption:
+  project: ./tsconfig.json
+exportDefault: 
+files:
+  - "**/*.ts"
+  - "**/*.tsx"

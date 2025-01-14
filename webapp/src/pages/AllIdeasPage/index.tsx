@@ -9,7 +9,7 @@ export const AllIdeasPage = () => {
              <h1>AllIdeas</h1>
              {data.ideas.map((idea) => (
                  <div key={idea.nick}>
-                     <h2>{idea.name}</h2>
+                     <h2>{idea.title}</h2>
                      <p>{idea.description}</p>
                  </div>
              ))}

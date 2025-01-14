@@ -6,16 +6,14 @@
         "dev": "ts-node-dev --rs ./src/index.ts",
         "build": "rimraf ./dist && tsc --build ./tsconfig.json",
         "start": "node ./dist/index.js",
+        "types": "tsc --noemit --project ./tsconfig.json",
+        "lint": "eslint .",
         "prettify": "prettier --log-level warn --ignore-path './.prettierignore --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}'"
+        
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",
-        "@types/express": "github:types/express",
-        "prettier": "^3.4.2",
-        "rimraf": "^6.0.1",
-        "ts-node": "^10.9.2",
-        "ts-node-dev": "^2.0.0",
-        "typescript": "^5.7.2"
+        "@types/express": "github:types/express"
     },
     "dependencies": {
         "@trpc/server": "^10.45.2",
