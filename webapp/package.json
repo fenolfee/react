@@ -7,6 +7,8 @@
         "dev": "vite",
         "build": "tsc -b && vite build",
         "lint": "eslint .",
+        "stylelint": "stylelint src/**/*.scss",
+        "stylecheck":" sass --update -q ./src:./node_modules/.cache/.stylecheckcache",
         "preview": "vite preview",
         "types": "tsc --noemit --project ./tsconfig.app.json && tsc --noEmit --project ./tsconfig.node.json",
         "prettify": "prettier --log-level warn --ignore-path './.prettierignore --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}'"
@@ -16,8 +18,12 @@
         "@tanstack/react-query": "^4.18.0",
         "@trpc/client": "^10.45.2",
         "@trpc/react-query": "^10.45.2",
+        "include-media": "^2.0.0",
         "react": "^18.3.1",
-        "react-dom": "^18.3.1"
+        "react-dom": "^18.3.1",
+        "react-router-dom": "^7.1.1",
+        "reset-css": "^5.0.2",
+        "sass": "^1.83.4"
     },
     "devDependencies": {
         "@types/react": "^18.3.12",
@@ -25,6 +31,9 @@
         "@vitejs/plugin-react": "^4.3.4",
         "globals": "^15.12.0",
         "prettier": "^3.4.2",
+        "stylelint": "^16.13.2",
+        "stylelint-config-prettier-scss": "^1.0.0",
+        "stylelint-config-standard-scss": "^14.0.0",
         "ts-node": "^10.9.2",
         "typescript": "~5.6.2",
         "vite": "^6.0.1"

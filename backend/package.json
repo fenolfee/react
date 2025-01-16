@@ -9,16 +9,18 @@
         "types": "tsc --noemit --project ./tsconfig.json",
         "lint": "eslint .",
         "prettify": "prettier --log-level warn --ignore-path './.prettierignore --cache --write '{src/**/*,*}.{ts,tsx,js,json,yml,scss}'"
-        
     },
     "devDependencies": {
         "@types/cors": "^2.8.17",
-        "@types/express": "github:types/express"
+        "@types/express": "github:types/express",
+        "@types/lodash": "^4.17.14"
     },
     "dependencies": {
         "@trpc/server": "^10.45.2",
         "cors": "^2.8.5",
         "express": "^4.21.2",
-        "vite": "^6.0.3"
+        "lodash": "^4.17.21",
+        "vite": "^6.0.3",
+        "zod": "^3.24.1"
     }
 }
