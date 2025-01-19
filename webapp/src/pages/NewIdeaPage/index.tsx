@@ -5,27 +5,23 @@ import { Input } from '../../components/input';
 import { Textarea } from '../../components/textarea';
 import { withZodSchema } from 'formik-validator-zod';
 import {z} from 'zod'
+import { trpc } from '../../lib/trpc';
 
 export const NewIdeaPage = () => {
-    // const [state, setState] = useState({
-    //   name: '',
-    //   nick: '',
-    //   description: '',
-    //   text: '',
-    // })
-
+    const createIdea = trpc.createIdea.useMutation()
     const formik = useFormik({
-        initialValues: { name: '', nick: '', description: '', text: '' },
+        initialValues: { title: '', nick: '', description: '', text: '' },
         validate: withZodSchema(
           z.object({
-            name: z.string().min(1, 'Name is required'),
+            title: z.string().min(1, 'Name is required'),
             nick: z.string().regex(/^[a-zA-Z0-9]+$/, 'Ник должен содержать только буковки и циферки').min(1),
             description: z.string().min(1, 'Description is required'),
             text: z.string().min(100, 'Text must contain at least 100 characters'),
           })
         ),
-        onSubmit: (values) => {
-            console.info('Submitted', values);
+
+        onSubmit: async (values) => {
+            await(createIdea.mutateAsync(values))
         },
     });
     return (
@@ -36,7 +32,7 @@ export const NewIdeaPage = () => {
                     formik.handleSubmit();
                 }}
             >
-                <Input name="name" label="Name" formik={formik} />
+                <Input name="title" label="Title" formik={formik} />
                 <Input name="nick" label="Nick" formik={formik} />
                 <Input name="description" label="Description" formik={formik} />
                 <Textarea name="text" label="Text" formik={formik} />
