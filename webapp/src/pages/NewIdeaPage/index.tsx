@@ -7,6 +7,8 @@ import { withZodSchema } from 'formik-validator-zod';
 import { trpc } from '../../lib/trpc';
 import { zCreateIdeaTrpcInput } from '@react/backend/src/router/createIdea/input';
 import { useState } from 'react';
+import { Alert } from '../../components/alert';
+import { Button } from '../../components/button';
 
 export const NewIdeaPage = () => {
     const [submittingError, setSubmittingError] = useState<string|null>(null);
@@ -37,16 +39,15 @@ export const NewIdeaPage = () => {
                     formik.handleSubmit();
                 }}
             >
-                <Input name="title" label="Title" formik={formik} />
-                <Input name="nick" label="Nick" formik={formik} />
+                <Input name="title" label="Title" formik={formik} maxWidth={500}/>
+                <Input name="nick" label="Nick" formik={formik} maxWidth={500}/>
                 <Input name="description" label="Description" formik={formik} />
                 <Textarea name="text" label="Text" formik={formik} />
-                {!formik.isValid && !!formik.submitCount && <div style={{ color: 'red' }}>Form is invalid</div>}
-                {submittingError && <div style={{ color:'red' }}>{submittingError}</div>}
-                {successMessageVisible && <div style={{ color: 'green' }}>Idea created successfully!</div>}
-                <button type="submit" disabled={formik.isSubmitting}>{
-                    formik.isSubmitting ? 'Submitting...' : 'Create Idea'
-                    }</button>
+                {!formik.isValid && !!formik.submitCount && <Alert color='red'>Form is invalid</Alert>}
+                {submittingError && <Alert color='red'>{submittingError}</Alert>}
+                {successMessageVisible && <Alert color='green'>Idea created successfully!</Alert>}
+                <Button loading={formik.isSubmitting}>Create Idea</Button>
+                
             </form>
         </Segment>
     );
